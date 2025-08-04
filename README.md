@@ -1,34 +1,25 @@
 # Image Classification
 
-## Project Description
-
-This project implements an image classification model using PyTorch to identify animal faces. It downloads a dataset of animal faces from Kaggle, preprocesses the images, builds a convolutional neural network (CNN), trains the model, and evaluates its performance. The model is trained to classify images into different animal categories. This README provides details on the project's key features, technologies used, setup instructions, and potential future enhancements.
+This project implements an image classification system using PyTorch to classify animal faces from the Animal Faces-HQ (AFHQ) dataset. It involves data preprocessing, convolutional neural network (CNN) model training, and performance evaluation using loss and accuracy metrics. The project also visualizes the training progress and allows for making predictions on new images after the model is trained.
 
 ## Key Features
 
-*   **Image Dataset Download:** Automatically downloads the animal faces dataset from Kaggle using the `opendatasets` library.
-*   **Data Preprocessing:** Resizes images to a uniform size (128x128), converts them to PyTorch tensors, and normalizes pixel values.
-*   **Custom Dataset:** Utilizes a custom `Dataset` class for efficient loading and preprocessing of images.
-*   **Data Splitting:** Splits the dataset into training (70%), validation (15%), and testing (15%) sets.
-*   **Convolutional Neural Network (CNN):** Implements a CNN architecture with convolutional layers, pooling layers, and ReLU activation functions.
-*   **Training and Validation:** Trains the model using the Adam optimizer and CrossEntropyLoss, monitoring training and validation loss and accuracy.
-*   **Performance Evaluation:** Evaluates the trained model on the test dataset and reports the final accuracy and loss.
-*   **Image Prediction:** Includes a function to predict the class of a single image.
-*   **Visualizations:** Plots training and validation loss and accuracy over epochs.
+*   **Animal Face Classification:** Specifically designed for classifying animal faces (cats, dogs, and wildlife) from the AFHQ dataset.
+*   **Convolutional Neural Network (CNN):** Employs a CNN architecture built with PyTorch for feature extraction and classification.
+*   **Data Preprocessing:** Includes image resizing, normalization, and conversion to PyTorch tensors.
+*   **Training and Validation:**  The dataset is split into training, validation, and testing sets to properly train and evaluate the model's performance. Training progress is monitored and visualized.
+*   **Performance Evaluation:**  The model's performance is evaluated using accuracy and loss metrics on both validation and test datasets.
+*   **Prediction on New Images:** After training, the model can be used to predict the class of new, unseen animal face images.
+*   **Uses GPU if avaliable:** The model training and inference is performed on available GPUs
 
 ## Technologies Used
 
 *   Python
-*   TensorFlow (although the primary framework is PyTorch)
 *   PyTorch
 *   `opendatasets`
-*   `torch`
-*   `torch.nn`
-*   `torch.optim`
-*   `torchvision.transforms`
-*   `torch.utils.data`
-*   `sklearn.preprocessing`
-*   `matplotlib.pyplot`
+*   `torchvision` (transforms)
+*   `sklearn` (LabelEncoder)
+*   `matplotlib`
 *   `PIL (Pillow)`
 *   `pandas`
 *   `torchsummary`
@@ -37,36 +28,32 @@ This project implements an image classification model using PyTorch to identify 
 
 1.  **Clone the repository:**
     ```bash
-    git clone <repository_url>
-    cd <repository_directory>
+    git clone [repository_url]
+    cd [repository_directory]
     ```
 
 2.  **Install the required libraries:**
     ```bash
-    pip install -r requirements.txt
+    pip install -r requirements.txt # Create requirements.txt file if there are any errors
     ```
-    *Note*: A `requirements.txt` file has to be created, containing the dependencies: 
-    ```
-    opendatasets
-    torch
-    torchvision
-    scikit-learn
-    matplotlib
-    Pillow
-    pandas
-    torchsummary
+    Alternatively, install the dependencies individually:
+    ```bash
+    pip install opendatasets torch torchvision scikit-learn matplotlib pandas torchsummary
     ```
 
 3.  **Download the dataset:**
-    The script downloads the Kaggle dataset directly. Ensure you have a Kaggle API key and it is properly configured.
+    The code automatically downloads the AFHQ dataset from Kaggle using `opendatasets`. You may need to provide your Kaggle API credentials.  Ensure you have a Kaggle account and have accepted the competition rules if necessary.
 
 4.  **Run the main script:**
     ```bash
-    python main.py # Or the name of your main script
+    python main.py # or the appropriate name of your python file
     ```
+
+    This will train the model, evaluate its performance, and generate plots of the training progress.
 
 ## Future Enhancements
 
-*   **Implement Data Augmentation:** Incorporate data augmentation techniques (e.g., random rotations, flips, zooms) to improve model generalization.
-*   **Explore Different CNN Architectures:** Experiment with different CNN architectures (e.g., ResNet, DenseNet) to potentially achieve higher accuracy.
-*   **Add a User Interface:** Develop a simple web or desktop application to allow users to upload images and get predictions from the trained model.
+*   **Implement Data Augmentation:** Integrate more advanced data augmentation techniques (e.g., rotations, flips, zooms) to improve the model's generalization and robustness.
+*   **Explore Different CNN Architectures:** Experiment with different pre-trained CNN architectures (e.g., ResNet, VGG) using transfer learning to potentially achieve higher accuracy.
+*   **Interactive Prediction Interface:** Build a simple web interface or GUI to allow users to upload images and get real-time predictions from the trained model.
+
